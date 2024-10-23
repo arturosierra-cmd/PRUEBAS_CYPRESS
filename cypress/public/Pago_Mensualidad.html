@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago de Mensualidad</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #343a40;
+            font-size: 24px;
+            text-align: center;
+        }
+        input[type="text"], label {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid #ced4da;
+            font-size: 16px;
+        }
+        .meses label {
+            display: inline-block;
+            width: 30%;
+            margin-bottom: 10px;
+        }
+        .meses input {
+            margin-right: 10px;
+        }
+        .total {
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Pago de Mensualidad</h2>
+        <input type="text" name="nombre" id="nombre" placeholder="Nombre del estudiante" value="Juan Perez">
+        <input type="text" name="seccion" id="seccion" placeholder="Sección" value="A">
+        <input type="text" name="grado" id="grado" placeholder="Grado" value="10">
+
+        <!-- Selección de meses a pagar -->
+        <div class="meses">
+            <label><input type="checkbox" name="ene" id="ene" value="75"> Enero</label>
+            <label><input type="checkbox" name="feb" id="feb" value="75"> Febrero</label>
+            <label><input type="checkbox" name="mar" id="mar" value="75"> Marzo</label>
+            <label><input type="checkbox" name="abr" id="abr" value="75"> Abril</label>
+            <label><input type="checkbox" name="may" id="may" value="75"> Mayo</label>
+            <label><input type="checkbox" name="jun" id="jun" value="75"> Junio</label>
+        </div>
+
+        <!-- Total a pagar -->
+        <div class="total">
+            Total: Q. <span id="totalPagar">0.00</span>
+        </div>
+
+        <button type="button" onclick="calcularTotal()">Calcular Total</button>
+        <button type="submit" onclick="procesarPago()">Pagar</button>
+
+        <p id="mensaje" style="color: red; display: none;">Por favor, seleccione al menos un mes para pagar.</p>
+    </div>
+
+    <script>
+        function calcularTotal() {
+            // Obtener todos los checkboxes
+            const checkboxes = document.querySelectorAll('.meses input[type="checkbox"]');
+            let total = 0;
+
+            // Calcular el total según los checkboxes seleccionados
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    total += parseFloat(checkbox.value);
+                }
+            });
+
+            // Mostrar el total calculado
+            document.getElementById('totalPagar').textContent = total.toFixed(2);
+        }
+
+        function procesarPago() {
+            const total = parseFloat(document.getElementById('totalPagar').textContent);
+
+            // Verificar que haya al menos un mes seleccionado
+            if (total === 0) {
+                document.getElementById('mensaje').style.display = 'block';
+            } else {
+                document.getElementById('mensaje').style.display = 'none';
+                alert('Pago procesado correctamente. Total a pagar: Q. ' + total.toFixed(2));
+                // Aquí puedes implementar la lógica de pago (conexión a backend, API, etc.)
+            }
+        }
+    </script>
+</body>
+</html>

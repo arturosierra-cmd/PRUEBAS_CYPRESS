@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validación de DPI</title>
+  <script defer src="validarDPI.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .wrapper {
+      display: flex;
+      max-width: 900px;
+      width: 100%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #fff;
+    }
+
+    /* Sección izquierda para el formulario */
+    .form-section {
+      padding: 40px;
+      width: 50%;
+      background-color: #fff;
+    }
+
+    .form-section h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .form-section p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .form-section input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .form-section input[type="text"]:focus {
+      border-color: #007bff;
+    }
+
+    .form-section button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: background-color 0.3s;
+    }
+
+    .form-section button:hover {
+      background-color: #0056b3;
+    }
+
+    #mensaje {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 15px;
+      color: red;
+    }
+
+    /* Estilo para la parte derecha con ilustración */
+    .illustration-section {
+      width: 50%;
+      background-color: #007bff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .illustration-section img {
+      width: 80%;
+      height: auto;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <!-- Sección del formulario -->
+    <div class="form-section">
+      <h1>Validación de DPI</h1>
+      <p>Ingrese su DPI para validarlo.</p>
+      <form id="dpiForm">
+        <input type="text" id="dpi" name="dpi" placeholder="Ej: 1234567890123" required>
+        <button type="submit">Validar</button>
+      </form>
+      <p id="mensaje"></p>
+    </div>
+
+    <!-- Sección con ilustración -->
+    <div class="illustration-section">
+     <!-- <img src="https://via.placeholder.com/300x300.png?text=Ilustración" alt="Ilustración"> -->
+    </div -->
+  </div>
+
+</body>
+</html>

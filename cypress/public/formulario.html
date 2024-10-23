@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista de Formulario con Interacción</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            height: 80vh;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            width: 20%;
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 10px 0 0 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .sidebar button:hover {
+            background-color: #ddd;
+        }
+
+        .sidebar button.active {
+            background-color: #98e298;
+        }
+
+        .main-content {
+            width: 80%;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .header button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #98e298;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .header button:hover {
+            background-color: #77d377;
+        }
+
+        .form-list {
+            margin-top: 20px;
+        }
+
+        .form-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fce4e4;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+
+        .form-item span {
+            font-size: 18px;
+        }
+
+        .form-item button {
+            padding: 8px 15px;
+            margin-left: 10px;
+            background-color: #5bc0de;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-item button:hover {
+            background-color: #31b0d5;
+        }
+
+        .form-item button.delete {
+            background-color: #d9534f;
+        }
+
+        .form-item button.delete:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <button class="active">Solicitudes</button>
+            <button>Documentos</button>
+            <button>Estados</button>
+            <button>Papelera</button>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h2>Solicitudes</h2>
+                <button>Crear +</button>
+            </div>
+
+            <div class="form-list">
+                <div class="form-item">
+                    <span>Formulario 1</span>
+                    <div>
+                        <button>ver información</button>
+                        <button>Editar</button>
+                        <button class="delete">Eliminar</button>
+                    </div>
+                </div>
+
+                <div class="form-item">
+                    <span>Formulario 2</span>
+                    <div>
+                        <button>ver información</button>
+                        <button>Editar</button>
+                        <button class="delete">Eliminar</button>
+                    </div>
+                </div>
+
+                <div class="form-item">
+                    <span>Formulario 3</span>
+                    <div>
+                        <button>ver información</button>
+                        <button>Editar</button>
+                        <button class="delete">Eliminar</button>
+                    </div>
+                </div>
+
+                <div class="form-item">
+                    <span>Formulario 4</span>
+                    <div>
+                        <button>ver información</button>
+                        <button>Editar</button>
+                        <button class="delete">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script para la interacción del sidebar con retraso -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Seleccionamos todos los botones del sidebar
+            const buttons = document.querySelectorAll('.sidebar button');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Remover la clase 'active' de todos los botones después de un retraso
+                    setTimeout(() => {
+                        buttons.forEach(btn => btn.classList.remove('active'));
+                        
+                        // Añadir la clase 'active' al botón que se hizo clic
+                        this.classList.add('active');
+                    }, 500);  // El retraso es de 500 milisegundos
+                });
+            });
+        });
+    </script>
+</body>
+</html>
